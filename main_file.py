@@ -45,7 +45,7 @@ def create_dict(): ##составляем словарь словоформ
 def find_something(st, dict, n): ##ищем слова в наших строках
     for word in dict: ## для каждого слова в словаре
         for k in st: ##в каждой строке
-            if len(word) >= n: ## ищем слова длиньше пяти букв
+            if len(word) >= n: ## ищем слова длиньше n букв
                 try:
                     f = re.search(word, st[k][0])
                     if f:
@@ -72,7 +72,7 @@ def post_work(dict, n): ##делаем красивый вывод
                 f.write(re.sub('_', ' ', k.split('.txt')[0]))
             else:
                 f.write(re.sub('_', ' ', k.split('.TXT')[0]))
-            f.write('\t' + str(len(dict[k][1:]))) ##пишем количество слов
+            f.write('\t' + str((len(dict[k][1:])/len(dict[k][0]))*100)) ##пишем количество слов
             f.write('\n')
 
 
